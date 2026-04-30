@@ -42,3 +42,4 @@ flowchart LR
     ESP --- GND
     DRV --- GND
     DRV --- SLP
+```
