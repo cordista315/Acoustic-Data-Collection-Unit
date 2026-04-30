@@ -1,122 +1,105 @@
-<svg viewBox="0 0 900 980" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
-  <rect width="900" height="980" fill="#FAFAFA"/>
-  <text x="450" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a1a">BLE Acoustic Turntable — Software Flowchart</text>
+<svg viewBox="0 0 1000 1650" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- Background -->
+  <rect width="1000" height="1650" fill="#FFFFFF"/>
+  
+  <!-- Header -->
+  <rect width="1000" height="80" fill="#2C3E50"/>
+  <text x="500" y="50" text-anchor="middle" font-size="24" font-weight="bold" fill="#FFFFFF">BLE Turntable Controller — Logic Flow v2.3.0</text>
 
   <defs>
-    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M2 1L8 5L2 9" fill="none" stroke="#333" stroke-width="1.5"/>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#555"/>
     </marker>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
   </defs>
 
-  <!-- START -->
-  <ellipse cx="450" cy="80" rx="70" ry="28" fill="#2C3E50" stroke="#1a252f" stroke-width="1.5"/>
-  <text x="450" y="85" text-anchor="middle" font-size="13" font-weight="bold" fill="white">START</text>
-  <line x1="450" y1="108" x2="450" y2="138" stroke="#333" stroke-width="1.5" marker-end="url(#a)"/>
+  <!-- 1. TOP LEVEL: SETUP -->
+  <ellipse cx="500" cy="140" rx="80" ry="30" fill="#34495E" filter="url(#shadow)"/>
+  <text x="500" y="146" text-anchor="middle" font-size="16" font-weight="bold" fill="white">START</text>
+  
+  <path d="M500,170 V210" stroke="#555" stroke-width="2" marker-end="url(#arrowhead)"/>
 
-  <!-- Setup -->
-  <rect x="320" y="138" width="260" height="70" rx="8" fill="#EAF0FF" stroke="#2980B9" stroke-width="1.5"/>
-  <text x="450" y="162" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">setup()</text>
-  <text x="450" y="178" text-anchor="middle" font-size="10" fill="#555">Init pins, microstepping 1/4</text>
-  <text x="450" y="192" text-anchor="middle" font-size="10" fill="#555">Init BLE GATT server, start advertising</text>
-  <line x1="450" y1="208" x2="450" y2="238" stroke="#333" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="350" y="210" width="300" height="80" rx="10" fill="#EBF5FB" stroke="#2E86C1" stroke-width="2"/>
+  <text x="500" y="245" text-anchor="middle" font-size="16" font-weight="bold" fill="#21618C">setup()</text>
+  <text x="500" y="265" text-anchor="middle" font-size="13" fill="#555">BLE Init &amp; Motor Config</text>
 
-  <!-- BLE Connected? -->
-  <polygon points="450,238 590,278 450,318 310,278" fill="#FFF3CD" stroke="#F0AD4E" stroke-width="1.5"/>
-  <text x="450" y="283" text-anchor="middle" font-size="11" fill="#333">BLE Client</text>
-  <text x="450" y="297" text-anchor="middle" font-size="11" fill="#333">Connected?</text>
-  <!-- No -->
-  <line x1="590" y1="278" x2="700" y2="278" stroke="#E74C3C" stroke-width="1.5" marker-end="url(#a)"/>
-  <text x="648" y="270" text-anchor="middle" font-size="10" fill="#E74C3C">No</text>
-  <rect x="700" y="255" width="120" height="46" rx="6" fill="#FDEDEC" stroke="#E74C3C" stroke-width="1"/>
-  <text x="760" y="275" text-anchor="middle" font-size="10" fill="#333">Advertising</text>
-  <text x="760" y="289" text-anchor="middle" font-size="10" fill="#555">Wait for client</text>
-  <line x1="760" y1="301" x2="760" y2="370" stroke="#E74C3C" stroke-width="1" stroke-dasharray="4,2"/>
-  <line x1="760" y1="370" x2="450" y2="370" stroke="#E74C3C" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#a)"/>
-  <!-- Yes -->
-  <line x1="450" y1="318" x2="450" y2="378" stroke="#27AE60" stroke-width="1.5" marker-end="url(#a)"/>
-  <text x="460" y="350" font-size="10" fill="#27AE60">Yes</text>
+  <path d="M500,290 V340" stroke="#555" stroke-width="2" marker-end="url(#arrowhead)"/>
 
-  <!-- loop() -->
-  <rect x="320" y="378" width="260" height="50" rx="8" fill="#EAF0FF" stroke="#2980B9" stroke-width="1.5"/>
-  <text x="450" y="400" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">loop()</text>
-  <text x="450" y="416" text-anchor="middle" font-size="10" fill="#555">Check currentMode</text>
-  <line x1="450" y1="428" x2="450" y2="458" stroke="#333" stroke-width="1.5" marker-end="url(#a)"/>
+  <!-- 2. MAIN LOOP ENTRY -->
+  <rect x="350" y="340" width="300" height="60" rx="10" fill="#D5F5E3" stroke="#27AE60" stroke-width="2" filter="url(#shadow)"/>
+  <text x="500" y="375" text-anchor="middle" font-size="18" font-weight="bold" fill="#186A3B">loop()</text>
+  
+  <path d="M500,400 V440" stroke="#555" stroke-width="2" marker-end="url(#arrowhead)"/>
 
-  <!-- Mode check -->
-  <polygon points="450,458 590,498 450,538 310,498" fill="#FFF3CD" stroke="#F0AD4E" stroke-width="1.5"/>
-  <text x="450" y="498" text-anchor="middle" font-size="11" fill="#333">currentMode?</text>
+  <!-- 3. MODE SELECTOR (The Hub) -->
+  <polygon points="500,440 660,500 500,560 340,500" fill="#FEF9E7" stroke="#D4AC0D" stroke-width="2"/>
+  <text x="500" y="505" text-anchor="middle" font-size="14" font-weight="bold">currentMode?</text>
 
-  <!-- IDLE branch -->
-  <line x1="310" y1="498" x2="150" y2="498" stroke="#333" stroke-width="1.5" marker-end="url(#a)"/>
-  <text x="228" y="490" text-anchor="middle" font-size="10" fill="#333">IDLE</text>
-  <rect x="50" y="475" width="100" height="46" rx="6" fill="#F5F5F5" stroke="#888" stroke-width="1"/>
-  <text x="100" y="496" text-anchor="middle" font-size="10" fill="#333">Wait for</text>
-  <text x="100" y="510" text-anchor="middle" font-size="10" fill="#555">BLE command</text>
+  <!-- BRANCHES -->
+  <!-- IDLE -->
+  <path d="M340,500 H150 V600" stroke="#7F8C8D" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <rect x="50" y="600" width="200" height="70" rx="10" fill="#F4F6F7" stroke="#7F8C8D" stroke-width="2"/>
+  <text x="150" y="630" text-anchor="middle" font-size="14" font-weight="bold">IDLE</text>
+  <text x="150" y="650" text-anchor="middle" font-size="12" fill="#555">Waiting for BLE</text>
 
-  <!-- SWEEPING branch -->
-  <line x1="450" y1="538" x2="450" y2="568" stroke="#E67E22" stroke-width="1.5" marker-end="url(#a)"/>
-  <text x="462" y="556" font-size="10" fill="#E67E22">SWEEPING</text>
-  <rect x="320" y="568" width="260" height="50" rx="8" fill="#FEF9E7" stroke="#E67E22" stroke-width="1.5"/>
-  <text x="450" y="590" text-anchor="middle" font-size="11" fill="#333">Dwell timer elapsed?</text>
-  <text x="450" y="604" text-anchor="middle" font-size="10" fill="#555">now - lastSweepTime ≥ dwellMs</text>
+  <!-- SCANNING -->
+  <path d="M660,500 H850 V600" stroke="#8E44AD" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <rect x="750" y="600" width="200" height="70" rx="10" fill="#F5EEF8" stroke="#8E44AD" stroke-width="2"/>
+  <text x="850" y="630" text-anchor="middle" font-size="14" font-weight="bold">SCANNING</text>
+  <text x="850" y="650" text-anchor="middle" font-size="12" fill="#555">Wait for ACK</text>
 
-  <!-- SCANNING branch -->
-  <line x1="590" y1="498" x2="750" y2="498" stroke="#8E44AD" stroke-width="1.5" marker-end="url(#a)"/>
-  <text x="668" y="490" text-anchor="middle" font-size="10" fill="#8E44AD">SCANNING</text>
-  <rect x="750" y="475" width="120" height="46" rx="6" fill="#F3E5F5" stroke="#8E44AD" stroke-width="1"/>
-  <text x="810" y="496" text-anchor="middle" font-size="10" fill="#333">Waiting for</text>
-  <text x="810" y="510" text-anchor="middle" font-size="10" fill="#555">ACK from host</text>
+  <!-- SWEEPING -->
+  <path d="M500,560 V600" stroke="#E67E22" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <rect x="350" y="600" width="300" height="70" rx="10" fill="#FEF5E7" stroke="#E67E22" stroke-width="2"/>
+  <text x="500" y="630" text-anchor="middle" font-size="14" font-weight="bold">SWEEPING</text>
+  <text x="500" y="650" text-anchor="middle" font-size="12" fill="#555">Dwell &amp; Auto-Step</text>
 
-  <!-- Sweep step -->
-  <line x1="450" y1="618" x2="450" y2="648" stroke="#333" stroke-width="1.5" marker-end="url(#a)"/>
-  <rect x="320" y="648" width="260" height="60" rx="8" fill="#FEF9E7" stroke="#E67E22" stroke-width="1.5"/>
-  <text x="450" y="671" text-anchor="middle" font-size="11" fill="#333">At 360°?</text>
-  <text x="450" y="687" text-anchor="middle" font-size="10" fill="#555">currentAngle ≥ 360 - step</text>
-  <!-- Yes done -->
-  <line x1="580" y1="678" x2="660" y2="678" stroke="#333" stroke-width="1.5" marker-end="url(#a)"/>
-  <text x="620" y="670" text-anchor="middle" font-size="10" fill="#333">Yes</text>
-  <rect x="660" y="655" width="120" height="46" rx="6" fill="#E8F8F5" stroke="#27AE60" stroke-width="1"/>
-  <text x="720" y="676" text-anchor="middle" font-size="10" fill="#333">SWEEP_DONE</text>
-  <text x="720" y="690" text-anchor="middle" font-size="10" fill="#555">mode = IDLE</text>
-  <!-- No step -->
-  <line x1="450" y1="708" x2="450" y2="738" stroke="#333" stroke-width="1.5" marker-end="url(#a)"/>
-  <text x="462" y="726" font-size="10" fill="#333">No</text>
-  <rect x="320" y="738" width="260" height="50" rx="8" fill="#FEF9E7" stroke="#E67E22" stroke-width="1.5"/>
-  <text x="450" y="759" text-anchor="middle" font-size="11" fill="#333">moveBySteps(stepIncrSteps)</text>
-  <text x="450" y="773" text-anchor="middle" font-size="10" fill="#555">notify ANGLE,TS,RUN</text>
+  <!-- 4. ASYNC COMMAND MANIFOLD -->
+  <rect x="50" y="740" width="900" height="150" rx="15" fill="#F0F3F4" stroke="#3498DB" stroke-width="2" stroke-dasharray="10,5"/>
+  <text x="500" y="775" text-anchor="middle" font-size="18" font-weight="bold" fill="#2980B9">BLE Async Callback (RxCallbacks)</text>
+  <text x="500" y="805" text-anchor="middle" font-size="13" fill="#555">Manual GOTO, STEP, BACK, and Mode Setting commands enter here</text>
 
-  <!-- Command handler box -->
-  <rect x="30" y="598" width="200" height="220" rx="8" fill="#EAF0FF" stroke="#2980B9" stroke-width="1.5"/>
-  <text x="130" y="622" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">BLE Command Handler</text>
-  <text x="130" y="642" text-anchor="middle" font-size="10" fill="#555">(RxCallbacks::onWrite)</text>
-  <text x="40" y="662" font-size="9" fill="#333">GOTO:N → moveToSteps(N)</text>
-  <text x="40" y="676" font-size="9" fill="#333">STEP    → moveBySteps(+inc)</text>
-  <text x="40" y="690" font-size="9" fill="#333">BACK    → moveBySteps(-inc)</text>
-  <text x="40" y="704" font-size="9" fill="#333">SCAN:N  → start scan mode</text>
-  <text x="40" y="718" font-size="9" fill="#333">SWEEP   → start sweep mode</text>
-  <text x="40" y="732" font-size="9" fill="#333">STOP    → mode = IDLE</text>
-  <text x="40" y="746" font-size="9" fill="#333">RESET   → moveToSteps(0)</text>
-  <text x="40" y="760" font-size="9" fill="#333">ZERO    → currentSteps = 0</text>
-  <text x="40" y="774" font-size="9" fill="#333">HOLD:ON/OFF → motor en/dis</text>
-  <text x="40" y="788" font-size="9" fill="#333">STATUS  → report state</text>
-  <text x="40" y="802" font-size="9" fill="#333">INFO    → report config</text>
+  <!-- THE CONVERGENCE (Funneling all nodes to Movement) -->
+  <!-- From IDLE -->
+  <path d="M150,670 V740" stroke="#7F8C8D" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <!-- From SWEEP -->
+  <path d="M500,670 V740" stroke="#E67E22" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <!-- From SCAN -->
+  <path d="M850,670 V740" stroke="#8E44AD" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
 
-  <!-- moveToSteps detail -->
-  <rect x="300" y="858" width="300" height="90" rx="8" fill="#E8F5E9" stroke="#27AE60" stroke-width="1.5"/>
-  <text x="450" y="880" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">moveToSteps(target)</text>
-  <text x="310" y="898" font-size="10" fill="#555">1. Normalize target mod 800</text>
-  <text x="310" y="912" font-size="10" fill="#555">2. delta = target - current (integer)</text>
-  <text x="310" y="926" font-size="10" fill="#555">3. if delta == 0: return (no move)</text>
-  <text x="310" y="940" font-size="10" fill="#555">4. Apply approach dir override</text>
-  <text x="310" y="954" font-size="10" fill="#555">5. stepMotor(delta) → currentSteps += delta</text>
+  <!-- Exit from Manifold to Movement -->
+  <path d="M500,890 V950" stroke="#16A085" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="515" y="930" font-size="14" font-weight="bold" fill="#16A085">CALL MOTION</text>
 
-  <line x1="450" y1="788" x2="450" y2="856" stroke="#27AE60" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a)"/>
+  <!-- 5. CENTRAL MOVEMENT NODE -->
+  <rect x="250" y="950" width="500" height="200" rx="12" fill="#E8F8F5" stroke="#16A085" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="500" y="990" text-anchor="middle" font-size="20" font-weight="bold" fill="#0E6251">moveToSteps(target)</text>
+  <line x1="280" y1="1005" x2="720" y2="1005" stroke="#16A085" stroke-width="1.5"/>
+  
+  <g font-size="14" fill="#111">
+    <text x="280" y="1035">1. Target Normalization (0-799 steps)</text>
+    <text x="280" y="1060">2. Determine shortest rotation (CW vs CCW)</text>
+    <text x="280" y="1085">3. Execute Anti-Backlash Approach</text>
+    <text x="280" y="1110">4. Pulse STEP pin &amp; Notify BLE Client</text>
+  </g>
 
-  <!-- loop back arrow -->
-  <line x1="450" y1="788" x2="830" y2="788" stroke="#333" stroke-width="1" stroke-dasharray="4,2"/>
-  <line x1="830" y1="788" x2="830" y2="400" stroke="#333" stroke-width="1" stroke-dasharray="4,2"/>
-  <line x1="830" y1="400" x2="582" y2="400" stroke="#333" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#a)"/>
-  <text x="850" y="600" font-size="10" fill="#888" transform="rotate(90,850,600)">loop back</text>
+  <!-- 6. THE RETURN PATH -->
+  <path d="M500,1150 V1220" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="510" y="1200" font-size="14" font-weight="bold" fill="#555">EXIT TO LOOP</text>
 
-  <text x="450" y="978" text-anchor="middle" font-size="10" fill="#888">ECE 428/528 — BLE Acoustic Turntable — Mercer University — Dr. Anthony Choi</text>
+  <!-- Join point for branches that didn't move -->
+  <rect x="400" y="1220" width="200" height="50" rx="10" fill="#EBEDEF" stroke="#BDC3C7" stroke-width="2"/>
+  <text x="500" y="1250" text-anchor="middle" font-size="14" font-weight="bold">Cleanup &amp; Yield</text>
+
+  <!-- THE CLEAR LOOPBACK -->
+  <path d="M600,1245 H940 V370 H650" stroke="#555" stroke-width="2" fill="none" stroke-dasharray="10,5" marker-end="url(#arrowhead)"/>
+  
+  <rect x="880" y="700" width="120" height="40" rx="5" fill="white" stroke="#555"/>
+  <text x="940" y="725" text-anchor="middle" font-size="12" font-weight="bold" transform="rotate(90, 940, 725)">LOOP BACK</text>
+
+  <!-- Footer -->
+  <line x1="100" y1="1350" x2="900" y2="1350" stroke="#D5DBDB" stroke-width="1"/>
+  <text x="500" y="1390" text-anchor="middle" font-size="14" fill="#95A5A6" font-style="italic">ReSpeaker Edition v2.3.0 — Mercer University ECE</text>
 </svg>
