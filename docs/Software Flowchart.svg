@@ -102,13 +102,13 @@
   <text x="40" y="802" font-size="9" fill="#333">INFO    → report config</text>
 
   <!-- moveToSteps detail -->
-  <rect x="300" y="844" width="300" height="90" rx="8" fill="#E8F5E9" stroke="#27AE60" stroke-width="1.5"/>
-  <text x="450" y="866" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">moveToSteps(target)</text>
-  <text x="310" y="880" font-size="10" fill="#555">1. Normalize target mod 800</text>
-  <text x="310" y="998" font-size="10" fill="#555">2. delta = target - current (integer)</text>
-  <text x="310" y="912" font-size="10" fill="#555">3. if delta == 0: return (no move)</text>
-  <text x="310" y="926" font-size="10" fill="#555">4. Apply approach dir override</text>
-  <text x="310" y="940" font-size="10" fill="#555">5. stepMotor(delta) → currentSteps += delta</text>
+  <rect x="300" y="858" width="300" height="90" rx="8" fill="#E8F5E9" stroke="#27AE60" stroke-width="1.5"/>
+  <text x="450" y="880" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">moveToSteps(target)</text>
+  <text x="310" y="898" font-size="10" fill="#555">1. Normalize target mod 800</text>
+  <text x="310" y="912" font-size="10" fill="#555">2. delta = target - current (integer)</text>
+  <text x="310" y="926" font-size="10" fill="#555">3. if delta == 0: return (no move)</text>
+  <text x="310" y="940" font-size="10" fill="#555">4. Apply approach dir override</text>
+  <text x="310" y="954" font-size="10" fill="#555">5. stepMotor(delta) → currentSteps += delta</text>
 
   <line x1="450" y1="788" x2="450" y2="856" stroke="#27AE60" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a)"/>
 
