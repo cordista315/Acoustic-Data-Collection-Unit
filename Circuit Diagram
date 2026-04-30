@@ -1,0 +1,44 @@
+```mermaid
+flowchart LR
+    %% ===== Power Section =====
+    subgraph Power
+        BATT["3S LiPo Battery\n11.1V 5200mAh"]
+        CAP["100µF Capacitor (35V)\nSpike Suppression"]
+    end
+
+    %% ===== Control Section =====
+    subgraph Control
+        ESP["ESP32\nBLE + Control Logic"]
+    end
+
+    %% ===== Driver Section =====
+    subgraph Driver
+        DRV["DRV8825 Stepper Driver"]
+    end
+
+    %% ===== Actuator =====
+    subgraph Actuator
+        MOTOR["Stepper Motor"]
+    end
+
+    %% Power Flow
+    BATT -->|VMOT| CAP --> DRV
+
+    %% Logic Power
+    ESP -->|3.3V Logic| DRV
+
+    %% Control Signals
+    ESP -->|STEP| DRV
+    ESP -->|DIR| DRV
+    ESP -->|ENABLE| DRV
+
+    %% Output
+    DRV --> MOTOR
+
+    %% Notes
+    GND["Common Ground"]
+    SLP["SLEEP & RESET tied HIGH"]
+
+    ESP --- GND
+    DRV --- GND
+    DRV --- SLP
