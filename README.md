@@ -127,6 +127,7 @@ Each READY packet contains:
 - https://lastminuteengineers.com/drv8825-stepper-motor-driver-arduino-tutorial/
 - https://www.monolithicpower.com/en/learning/resources/stepper-motors-basics-types-uses
 - https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/bt-architecture/overview.html
+- https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/libraries/bluetooth/services/nus.html
 
 ## Advisor
 Dr. Anthony Choi — Mercer University, Department of ECE
