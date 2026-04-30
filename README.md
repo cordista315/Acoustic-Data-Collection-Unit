@@ -123,6 +123,10 @@ Each READY packet contains:
 - Step size
 - Run number (auto-increments each SCAN or SWEEP)
 
+## Additional Resources
+- [[https://lastminuteengineers.com/drv8825-stepper-motor-driver-arduino-tutorial/]]
+- [[https://www.monolithicpower.com/en/learning/resources/stepper-motors-basics-types-uses]]
+
 ## Advisor
 Dr. Anthony Choi — Mercer University, Department of ECE
 
